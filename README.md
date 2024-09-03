@@ -9,4 +9,4 @@ pnpm i
 
 ## 访问地址
 
-<https://meix.netlify.app/>
+<https://mxwebgl.netlify.app/>
