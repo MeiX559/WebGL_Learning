@@ -22,7 +22,8 @@ export default defineConfig({
           { text: 'WebGL概念', link: '/webgl/concept' },
           { text: 'WebGL绘制点', link: '/webgl/point' },
           { text: 'WebGL动态绘制点', link: '/webgl/drawPoint' },
-          { text: 'WebGL动态绘制颜色', link: '/webgl/changeColor' }
+          { text: 'WebGL动态绘制颜色', link: '/webgl/changeColor' },
+          { text: 'WebGL动态绘制线', link: '/webgl/line' }
         ]
       }
     ],
