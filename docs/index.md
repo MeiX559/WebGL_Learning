@@ -11,9 +11,9 @@ hero:
     alt: meixiu
   actions:
     - text: WebGL基础知识
-      link: /fe/javascript/conversions/index
+      link: /webgl/concept
     - text: 前言
-      link: /tools/online-tools
+      link: /webgl/concept
       theme: alt
 
 features:

@@ -18,7 +18,12 @@ export default defineConfig({
     sidebar: [
       {
         text: 'WebGL基础知识',
-        items: [{ text: 'WebGL概念', link: '/webgl/concept' }]
+        items: [
+          { text: 'WebGL概念', link: '/webgl/concept' },
+          { text: 'WebGL绘制点', link: '/webgl/point' },
+          { text: 'WebGL动态绘制点', link: '/webgl/drawPoint' },
+          { text: 'WebGL动态绘制颜色', link: '/webgl/changeColor' }
+        ]
       }
     ],
 
