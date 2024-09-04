@@ -9,13 +9,14 @@
     id="webgl"
     width="500"
     height="200"
-    style="background-color: blue"
+    style="background-color: black"
     class="canvas"
   ></canvas>
 </template>
 
 <script setup lang="ts">
 import { onMounted } from 'vue'
+import { createBuffer, createShader, createProgram } from '../utils'
 let canvas: any = null
 let gl: any = null
 
@@ -45,32 +46,27 @@ let a_Position, a_Color
 
 //声明初始化着色器函数
 function initShader(gl, vertexShaderSource, fragmentShaderSource) {
-  var vertexShader = gl.createShader(gl.VERTEX_SHADER) //创建顶点着色器对象
-  gl.shaderSource(vertexShader, vertexShaderSource) //引入顶点着色器源代码
-  gl.compileShader(vertexShader) //编译顶点着色器
-
-  var fragmentShader = gl.createShader(gl.FRAGMENT_SHADER) //创建片元着色器对象
-  gl.shaderSource(fragmentShader, fragmentShaderSource) //引入片元着色器源代码
-  gl.compileShader(fragmentShader) //编译片元着色器
-
+  // 创建顶点着色器对象和片元着色器对象
+  const vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexShaderSource)
+  const fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSource)
   //创建着色器程序
-  var program = gl.createProgram()
-  gl.attachShader(program, vertexShader) //为程序program添加顶点着色器
-  gl.attachShader(program, fragmentShader) //为程序program添加片元着色器
-  gl.linkProgram(program) // 连接 顶点着色器 和 片元着色器，也就是组合成对
-  gl.useProgram(program) // 应用着色器程序，告诉 WebGL 绘制的时候使用这个着色程序
+  const program = createProgram(gl, vertexShader, fragmentShader)
 
   a_Position = gl.getAttribLocation(program, 'a_Position')
   a_Color = gl.getAttribLocation(program, 'a_Color')
 
+  //   创建缓冲区
   //   const vertices = new Float32Array([0, 0.8, -0.6, -0.6, 0.6, -0.6])
   const vertices = new Float32Array([-0.5, 0.5, -0.5, -0.5, 0, 0.5, 0, -0.5, 0.5, 0.5, 0.5, -0.5]) //   顶点坐标
+  //   创建顶点缓冲区
+  createBuffer(gl, vertices, { attribute: a_Position, size: 2 })
   const verticesColors = new Float32Array([
     -0.5, 0.5, 1, 0, 0, 1, -0.5, -0.5, 1, 0, 0, 1, 0, 0.5, 0, 1, 0, 1, 0, -0.5, 0, 1, 0, 1, 0.5,
     0.5, 0, 0, 1, 1, 0.5, -0.5, 0, 0, 1, 1
   ]) //  颜色数据
-  //   创建缓冲区
-  createBuffer(vertices, verticesColors)
+  //   创建颜色缓冲区
+  createBuffer(gl, verticesColors, { attribute: a_Color, size: 4 })
+
   gl.clearColor(0, 0, 0, 0.9)
   gl.clear(gl.COLOR_BUFFER_BIT)
 
@@ -78,24 +74,6 @@ function initShader(gl, vertexShaderSource, fragmentShaderSource) {
   //   gl.drawArrays(gl.LINES, 0, 3)
   // 绘制三角形
   gl.drawArrays(gl.TRIANGLES, 0, 6)
-}
-
-function createBuffer(vertices: any, colors?: any) {
-  // 创建顶点缓冲区对象
-  const buffer = gl.createBuffer() // 创建缓冲区对象
-  gl.bindBuffer(gl.ARRAY_BUFFER, buffer) // 绑定缓冲区对象
-  gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW) // 写入缓冲区
-  gl.vertexAttribPointer(a_Position, 2, gl.FLOAT, false, 0, 0) // 分配缓冲区数据给 attribute
-  gl.enableVertexAttribArray(a_Position, a_Color) // 开启 attribute 变量
-
-  if (!colors) return
-
-  //   创建颜色缓冲区对象
-  const colorBuffer = gl.createBuffer() // 创建颜色缓冲区对象
-  gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer) // 绑定颜色缓冲区对象
-  gl.bufferData(gl.ARRAY_BUFFER, colors, gl.STATIC_DRAW) // 写入颜色缓冲区数据
-  gl.vertexAttribPointer(a_Color, 4, gl.FLOAT, false, 0, 0) // 分配颜色缓冲区数据给 a_Color
-  gl.enableVertexAttribArray(a_Color) // 启用 a_Color 变量
 }
 
 onMounted(() => {
@@ -155,12 +133,8 @@ function drawTriangleFan() {
     0.5,
     0.3 // v4, v5
   ])
-  const verticesColors = new Float32Array([
-    -0.5, 0.5, 1, 0, 0, 1, -0.5, -0.5, 1, 0, 0, 1, 0, 0.5, 0, 1, 0, 1, 0, -0.5, 0, 1, 0, 1, 0.5,
-    0.5, 0, 0, 1, 1, 0.5, -0.5, 0, 0, 1, 1
-  ]) //  颜色数据
   //   创建缓冲区
-  createBuffer(vertices, verticesColors)
+  createBuffer(gl, vertices, { attribute: a_Position, size: 2 })
   gl.clear(gl.COLOR_BUFFER_BIT)
   gl.drawArrays(gl.TRIANGLE_FAN, 0, 6)
 }
