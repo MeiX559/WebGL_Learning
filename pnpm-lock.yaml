@@ -11,6 +11,9 @@ importers:
       element-plus:
         specifier: ^2.8.1
         version: 2.8.1(vue@3.5.0)
+      three:
+        specifier: ^0.168.0
+        version: 0.168.0
       vue:
         specifier: ^3.5.0
         version: 3.5.0
@@ -654,6 +657,9 @@ packages:
 
   tabbable@6.2.0:
     resolution: {integrity: sha512-Cat63mxsVJlzYvN51JmVXIgNoUokrIaT2zLclCXjRd8boZ0004U4KCs/sToJ75C6sdlByWxpYnb5Boif1VSFew==}
+
+  three@0.168.0:
+    resolution: {integrity: sha512-6m6jXtDwMJEK/GGMbAOTSAmxNdzKvvBzgd7q8bE/7Tr6m7PaBh5kKLrN7faWtlglXbzj7sVba48Idwx+NRsZXw==}
 
   to-fast-properties@2.0.0:
     resolution: {integrity: sha512-/OaKK0xYrs3DmxRYqL/yDc+FxFUVYhDlXMhRmv3z915w2HF1tnN1omB354j8VUGO/hbRzyD6Y3sA7v7GS/ceog==}
@@ -1343,6 +1349,8 @@ snapshots:
       copy-anything: 3.0.5
 
   tabbable@6.2.0: {}
+
+  three@0.168.0: {}
 
   to-fast-properties@2.0.0: {}
 

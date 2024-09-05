@@ -30,6 +30,14 @@ export default defineConfig({
       {
         text: 'WebGL纹理',
         items: [{ text: 'WebGL纹理基本概念', link: '/texture/index' }]
+      },
+      {
+        text: '二维动画',
+        items: [{ text: '几何变换', link: '/animation/2d' }]
+      },
+      {
+        text: '三维动画',
+        items: [{ text: '几何变换', link: '/animation/3d' }]
       }
     ],
     /* 右侧大纲配置 */

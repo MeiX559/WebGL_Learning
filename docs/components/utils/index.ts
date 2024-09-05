@@ -1,3 +1,5 @@
+export * from './useMouseMatrixRotate'
+
 /**
  *创建着色器
  * @param gl
@@ -59,4 +61,20 @@ export const createBuffer = (gl, bufferData, attribute: AttributeType) => {
   gl.bufferData(gl.ARRAY_BUFFER, bufferData, gl.STATIC_DRAW) // 写入缓冲区
   gl.vertexAttribPointer(attribute.attribute, attribute.size, gl.FLOAT, false, 0, 0) // 分配缓冲区数据给 attribute
   gl.enableVertexAttribArray(attribute.attribute) // 开启 attribute 变量
+}
+
+export const createNewBuffer = (
+  gl,
+  target = gl.ARRAY_BUFFER,
+  data,
+  attribute,
+  size,
+  stride = 0,
+  offset = 0
+) => {
+  const buffer = gl.createBuffer()
+  gl.bindBuffer(target, buffer)
+  gl.bufferData(target, data, gl.STATIC_DRAW)
+  gl.vertexAttribPointer(attribute, size, gl.FLOAT, false, stride, offset)
+  gl.enableVertexAttribArray(attribute)
 }
