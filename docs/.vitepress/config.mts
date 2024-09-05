@@ -25,6 +25,10 @@ export default defineConfig({
           { text: 'WebGL动态绘制颜色', link: '/webgl/changeColor' },
           { text: 'WebGL动态绘制线', link: '/webgl/line' }
         ]
+      },
+      {
+        text: 'WebGL纹理',
+        items: [{ text: 'WebGL纹理基本概念', link: '/texture/index' }]
       }
     ],
 
