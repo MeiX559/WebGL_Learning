@@ -8,6 +8,7 @@ export default defineConfig({
   lang: 'zh-CN',
   title: 'WebGL',
   description: 'WebGL学习文档',
+  lastUpdated: true,
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
@@ -31,7 +32,26 @@ export default defineConfig({
         items: [{ text: 'WebGL纹理基本概念', link: '/texture/index' }]
       }
     ],
-
-    socialLinks: [{ icon: 'github', link: 'https://github.com/MeiX559/WebGL_Learning' }]
+    /* 右侧大纲配置 */
+    outline: {
+      level: 'deep',
+      label: '本页目录'
+    },
+    socialLinks: [{ icon: 'github', link: 'https://github.com/MeiX559/WebGL_Learning' }],
+    darkModeSwitchLabel: '外观',
+    returnToTopLabel: '返回顶部',
+    lastUpdatedText: '上次更新',
+    docFooter: {
+      prev: '上一篇',
+      next: '下一篇'
+    },
+    footer: {
+      message: '如有转载或 CV 的请标注本站原文地址',
+      copyright: `Copyright © 2024  <a href="https://github.com/MeiX559/WebGL_Learning">meixiu</a>`
+    },
+    editLink: {
+      pattern: 'https://github.com/MeiX559/WebGL_Learning',
+      text: '在 GitHub 上编辑此页面'
+    }
   }
 })
