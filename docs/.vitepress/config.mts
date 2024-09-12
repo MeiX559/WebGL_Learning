@@ -23,7 +23,7 @@ export default defineConfig({
           { text: 'WebGL概念', link: '/webgl/concept' },
           { text: 'WebGL绘制点', link: '/webgl/point' },
           { text: 'WebGL动态绘制点', link: '/webgl/drawPoint' },
-          { text: 'WebGL动态绘制颜色', link: '/webgl/changeColor' },
+          // { text: 'WebGL动态绘制颜色', link: '/webgl/changeColor' },
           { text: 'WebGL动态绘制线', link: '/webgl/line' }
         ]
       },
@@ -39,6 +39,10 @@ export default defineConfig({
         text: '三维动画',
         items: [{ text: '几何变换', link: '/animation/3d' }]
       }
+      // {
+      //   text: 'Three.js',
+      //   items: [{ text: 'Three.js基础知识', link: '/three/index' }]
+      // }
     ],
     /* 右侧大纲配置 */
     outline: {

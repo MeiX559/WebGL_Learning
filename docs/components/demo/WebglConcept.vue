@@ -26,13 +26,15 @@ var vertexShaderSource = `
         `
 //片元着色器源码
 var fragShaderSource = `
+            precision mediump float;
+            uniform vec4 u_FragColor;
             void main () {
             // 顶点颜色 (R, G, B, A)
-            gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
+            gl_FragColor = u_FragColor;
         }
       `
 
-let a_Position
+let a_Position, u_FragColor
 
 //声明初始化着色器函数
 function initShader(gl, vertexShaderSource, fragmentShaderSource) {
@@ -51,13 +53,17 @@ function initShader(gl, vertexShaderSource, fragmentShaderSource) {
   gl.linkProgram(program) // 连接 顶点着色器 和 片元着色器，也就是组合成对
   gl.useProgram(program) // 应用着色器程序，告诉 WebGL 绘制的时候使用这个着色程序
 
-  const a_Position = gl.getAttribLocation(program, 'a_Position')
+  // 获取 a_Position 变量的值
+  a_Position = gl.getAttribLocation(program, 'a_Position')
+  // 获取 u_FragColor 变量的值
+  u_FragColor = gl.getUniformLocation(program, 'u_FragColor')
+
   gl.clearColor(0, 0, 0, 0.9)
   gl.clear(gl.COLOR_BUFFER_BIT)
 
-  // gl.vertexAttrib2f(a_Position, -0.9, 0.0)
+  gl.vertexAttrib2f(a_Position, -0.0, 0.0)
   //开始绘制，显示器显示结果
-  // gl.drawArrays(gl.POINTS, 0, 1)
+  gl.drawArrays(gl.POINTS, 0, 1)
 }
 
 onMounted(() => {
@@ -78,6 +84,7 @@ function drawFn(e: MouseEvent) {
   gl.clear(gl.COLOR_BUFFER_BIT)
 
   gl.vertexAttrib2f(a_Position, glX, glY)
+  gl.uniform4f(u_FragColor, Math.random(), Math.random(), Math.random(), 0.8)
   gl.drawArrays(gl.POINTS, 0, 1)
 }
 </script>
