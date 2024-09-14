@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "vitepress dev docs",
+    "dev": "vitepress dev docs --port=8733",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs"
   },

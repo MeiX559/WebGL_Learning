@@ -38,11 +38,11 @@ export default defineConfig({
       {
         text: '三维动画',
         items: [{ text: '几何变换', link: '/animation/3d' }]
+      },
+      {
+        text: 'Three.js',
+        items: [{ text: 'Three.js基础知识', link: '/three/index' }]
       }
-      // {
-      //   text: 'Three.js',
-      //   items: [{ text: 'Three.js基础知识', link: '/three/index' }]
-      // }
     ],
     /* 右侧大纲配置 */
     outline: {
