@@ -1,4 +1,4 @@
-import { defineConfig } from 'vitepress'
+import { defineConfig } from 'vitepress';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -37,7 +37,7 @@ export default defineConfig({
       },
       {
         text: '三维动画',
-        items: [{ text: '几何变换', link: '/animation/3d' }]
+        items: [{ text: '立方体', link: '/animation/3d' }]
       },
       {
         text: 'Three.js',
@@ -66,4 +66,4 @@ export default defineConfig({
       text: '在 GitHub 上编辑此页面'
     }
   }
-})
+});
