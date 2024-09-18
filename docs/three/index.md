@@ -14,70 +14,115 @@
 
 ### 场景 `Scene`
 
+:::tip 场景
+场景是一个三维空间，可以把场景想象成一个房间，里面可以放物体、相机、光源等。
+:::
+
 ```js
 // 创建场景
-var scene = new THREE.Scene()
+var scene = new THREE.Scene();
 ```
 
 ### 创建几何体
 
 ```js
-var geometry = new THREE.SphereGeometry(60, 60, 60) //创建一个球体几何对象
-var geometry = new THREE.BoxGeometry(100, 100, 100) //创建一个立方体几何对象Geometry
+var geometry = new THREE.SphereGeometry(60, 60, 60); //创建一个球体几何对象
+var geometry = new THREE.BoxGeometry(100, 100, 100); //创建一个立方体几何对象Geometry
 ```
 
-### 创建材质
+### 创建网格、材质
+
+:::tip mesh
+材质+几何体就是一个 mesh，`Three.js`中比较常用的用漫反射、镜面反射两种材质，另外，还可以引入外部图片贴到物体表面，成为纹理贴图。
+:::
 
 ```js
-var material = new THREE.MeshLambertMaterial({
-  color: 0x0000ff
-}) //材质对象Material
-var mesh = new THREE.Mesh(geometry, material) //网格模型对象Mesh
-scene.add(mesh) //网格模型添加到场景中
+const geometry = new THREE.BoxGeometry();
+const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+this.cube = new THREE.Mesh(geometry, material);
+this.scene.add(this.cube);
 ```
 
 ### 光源设置
+
+::: tip 光源
+有了场景、几何体、材质、相机等，还需要光源，如果没有光源，放在场景里的相机也看不到任何东西，因此需要往场景里添加光源。`Three.js`支持的光源有点光源、平行光、聚光灯、环境光等。
+:::
 
 ```js
 /**
  * 光源设置
  */
 //点光源
-var point = new THREE.PointLight(0xffffff)
-point.position.set(400, 200, 300) //点光源位置
-scene.add(point) //点光源添加到场景中
+var point = new THREE.PointLight(0xffffff);
+point.position.set(400, 200, 300); //点光源位置
+scene.add(point); //点光源添加到场景中
 //环境光
-var ambient = new THREE.AmbientLight(0x444444)
-scene.add(ambient)
+var ambient = new THREE.AmbientLight(0x444444);
+scene.add(ambient);
 ```
+
+#### 环境光
+
+:::tip 环境光
+环境光会均匀照亮场景中所有的物体。环境光没有方向。
+:::
+
+#### 平行光
+
+:::tip 平行光
+平行光沿着特定方向发射光，从它发出的光线都是平行的。
+:::
+
+#### 点光源
+
+:::tip 点光源
+点光源是从一个点向各个方向发射的光源。
+:::
+
+#### 聚光灯
+
+:::tip 聚光灯
+聚光灯是光线从一个点沿一个方向射出，随着光线照射的距离变远，光线圆锥体的尺寸也会逐渐变大。
+:::
 
 ### 相机 `Camera`
 
+:::tip 相机
+在`Three.js`中，想要将物体能够在场景中呈现，我们需要往场景中添加一个相机，相机可以用来确定位置、方向、角度等。
+:::
+
 ```js
-/**
- * 相机设置
- */
-var width = window.innerWidth //窗口宽度
-var height = window.innerHeight //窗口高度
-var k = width / height //窗口宽高比
-var s = 200 //三维场景显示范围控制系数，系数越大，显示的范围越大
-//创建相机对象
-var camera = new THREE.OrthographicCamera(-s * k, s * k, s, -s, 1, 1000)
-camera.position.set(200, 300, 200) //设置相机位置
-camera.lookAt(scene.position) //设置相机方向(指向的场景对象)
+this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+this.camera.position.set(0, 0, 3); //设置相机位置
+this.camera.lookAt(this.scene.position); //设置相机方向(指向的场景对象)
 ```
+
+在`Three.js`中，一共有两种相机，分别是透视相机和正交相机。
+
+#### 透视相机
+
+:::tip 透视相机
+透视相机的特点：近大远小，符合人眼观察事物的特点。
+:::
+
+#### 正交相机
+
+:::tip 正交相机
+正交相机的特点：无论物体距离相机远或近，在最终渲染的图片中物体的大小都保持不变。
+:::
 
 ### 渲染器 `Renderer`
 
 ```js
-/**
- * 创建渲染器对象
- */
-var renderer = new THREE.WebGLRenderer({ canvas: canvasRef.value })
-renderer.setSize(500, 500) //设置渲染区域尺寸
-renderer.setClearColor(0xb9d3ff, 1) //设置背景颜色
-//执行渲染操作   指定场景、相机作为参数
-renderer.render(scene, camera)
+this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas });
+// 设置画布的大小
+this.renderer.setSize(500, 500); //设置渲染区域尺寸
+this.renderer.setClearColor(0xb9d3ff, 1); //设置背景颜色
+
+render() {
+  this.renderer.render(this.scene, this.camera);
+}
 ```
 
 经过以上的步骤设置之后，我们将在页面中看到如下图形：
