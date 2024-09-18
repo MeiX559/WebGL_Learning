@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import d3 from '../js/d3';
+// import d3 from '../js/d3';
 
 export class ChinaMap {
   scene: any;
