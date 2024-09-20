@@ -177,6 +177,12 @@ const render = () => {
   renderer.render(scene, camera)
 }
 
+// 添加辅助线
+function addHelper() {
+  const helper = new THREE.CameraHelper(camera)
+  scene.add(helper)
+}
+
 onMounted(() => {
   init()
 })
@@ -196,7 +202,7 @@ body {
   position: absolute;
   z-index: 2;
   background: white;
-  color: rebeccapurple;
+  color: #000000ff;
   padding: 10px;
   border-radius: 2px;
 }
