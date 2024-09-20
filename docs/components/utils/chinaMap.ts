@@ -137,6 +137,7 @@ export class Map {
   //   })
   // }
 
+  // 添加辅助线
   addHelper() {
     const helper = new THREE.CameraHelper(this.camera)
     this.scene.add(helper)
@@ -169,6 +170,9 @@ export class Map {
     // this.renderer.setPixelRatio(window.devicePixelRatio)
     // 设置画布的大小
     this.renderer.setSize(1000, 600)
+    // this.renderer.setPixelRatio(window.devicePixelRatio);
+    // // 设置画布的大小
+    // this.renderer.setSize(window.innerWidth, window.innerHeight);
   }
 
   // 设置环境光
