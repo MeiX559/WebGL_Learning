@@ -43,6 +43,7 @@ export default defineConfig({
         text: 'Three.js',
         items: [
           { text: 'Three.js基础知识', link: '/three/index' },
+          { text: 'Three.js顶点概念', link: '/three/point' },
           { text: 'Three.js绘制地图', link: '/three/map' }
         ]
       }
