@@ -49,7 +49,11 @@ function createAmbientLight() {
   return new THREE.AmbientLight(0x444444);
 }
 
-// 计算相机参数
+/**
+ * 计算相机参数
+ * @param {*} width  canvas画布宽
+ * @param {*} height canvas画布高
+ */
 function calculateCameraParameters(width, height) {
   const k = width / height;
   const s = 200;
