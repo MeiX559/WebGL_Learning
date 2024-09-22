@@ -44,6 +44,7 @@ export default defineConfig({
         items: [
           { text: 'Three.js基础知识', link: '/three/index' },
           { text: 'Three.js顶点概念', link: '/three/point' },
+          { text: 'Three.js生成曲线、几何体', link: '/three/gen' },
           { text: 'Three.js绘制地图', link: '/three/map' }
         ]
       }
