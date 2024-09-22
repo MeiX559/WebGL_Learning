@@ -28,46 +28,35 @@ let scene = null;
 
 const props = defineProps(['type']);
 
-function createGeometry() {
-  return new THREE.BoxGeometry(100, 100, 100);
-}
-
-function createMaterial() {
-  return new THREE.MeshLambertMaterial({ color: 0x0000ff });
-}
-
 function createMesh(geometry, material) {
   return new THREE.Mesh(geometry, material);
 }
 
-function addMeshToScene(scene, mesh) {
-  scene.add(mesh);
+// 添加到场景
+function addToScene(obj) {
+  scene.add(obj);
 }
 
+// 设置点光源
 function createPointLight() {
   const point = new THREE.PointLight(0xffffff);
   point.position.set(400, 200, 300);
   return point;
 }
 
-function addPointLightToScene(scene, pointLight) {
-  scene.add(pointLight);
-}
-
+// 设置环境光
 function createAmbientLight() {
   return new THREE.AmbientLight(0x444444);
 }
 
-function addAmbientLightToScene(scene, ambientLight) {
-  scene.add(ambientLight);
-}
-
+// 计算相机参数
 function calculateCameraParameters(width, height) {
   const k = width / height;
   const s = 200;
   return { k, s };
 }
 
+// 设置相机
 function createCamera(k, s) {
   return new THREE.OrthographicCamera(-s * k, s * k, s, -s, 1, 1000);
 }
@@ -77,6 +66,7 @@ function setCameraPositionAndLookAt(camera, scene) {
   camera.lookAt(scene.position);
 }
 
+// 创建渲染器
 function createRenderer(canvasElement) {
   const renderer = new THREE.WebGLRenderer({ canvas: canvasElement });
   renderer.setSize(600, 600);
@@ -125,7 +115,7 @@ function drawMesh() {
   }); //材质对象
   // 场景网格对象
   const mesh = createMesh(geometry, material);
-  addMeshToScene(scene, mesh);
+  addToScene(mesh);
   addHelp();
 }
 
@@ -319,14 +309,14 @@ onMounted(() => {
       genArc();
       break;
   }
-
   addHelp();
 
   // 创建光源
   const pointLight = createPointLight();
-  addPointLightToScene(scene, pointLight);
+  addToScene(pointLight);
   const ambientLight = createAmbientLight();
-  addAmbientLightToScene(scene, ambientLight);
+  addToScene(ambientLight);
+
   // 创建相机
   const { k, s } = calculateCameraParameters(600, 600);
   const camera = createCamera(k, s);
