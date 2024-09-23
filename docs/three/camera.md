@@ -59,3 +59,11 @@ camera.lookAt(scene.position); //观察目标(指向原点)
 ## 透视投影相机`PerspectiveCamera`
 
 透视投影相机和正投影相机类似，参数也是一样的，只不过`PerspectiveCamera`可以模拟人眼观察世界的视觉效果，近大远小，而正投影相机`OrthographicCamera`无论物体距离相机远或近，在最终渲染的图片中物体的大小都保持不变。
+
+使用`OrthographicCamera`渲染江西省地图边界
+
+<script setup>
+    import ThreeCamera from '../components/demo/threeCamera.vue'
+</script>
+
+<ThreeCamera />
