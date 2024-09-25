@@ -20,14 +20,14 @@
 
 ```js
 // 创建场景
-var scene = new THREE.Scene();
+var scene = new THREE.Scene()
 ```
 
 ### 创建几何体
 
 ```js
-var geometry = new THREE.SphereGeometry(60, 60, 60); //创建一个球体几何对象
-var geometry = new THREE.BoxGeometry(100, 100, 100); //创建一个立方体几何对象Geometry
+var geometry = new THREE.SphereGeometry(60, 60, 60) //创建一个球体几何对象
+var geometry = new THREE.BoxGeometry(100, 100, 100) //创建一个立方体几何对象Geometry
 ```
 
 ### 创建网格、材质
@@ -37,10 +37,10 @@ var geometry = new THREE.BoxGeometry(100, 100, 100); //创建一个立方体几�
 :::
 
 ```js
-const geometry = new THREE.BoxGeometry();
-const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-this.cube = new THREE.Mesh(geometry, material);
-this.scene.add(this.cube);
+const geometry = new THREE.BoxGeometry()
+const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 })
+this.cube = new THREE.Mesh(geometry, material)
+this.scene.add(this.cube)
 ```
 
 ### 光源设置
@@ -54,12 +54,12 @@ this.scene.add(this.cube);
  * 光源设置
  */
 //点光源
-var point = new THREE.PointLight(0xffffff);
-point.position.set(400, 200, 300); //点光源位置
-scene.add(point); //点光源添加到场景中
+var point = new THREE.PointLight(0xffffff)
+point.position.set(400, 200, 300) //点光源位置
+scene.add(point) //点光源添加到场景中
 //环境光
-var ambient = new THREE.AmbientLight(0x444444);
-scene.add(ambient);
+var ambient = new THREE.AmbientLight(0x444444)
+scene.add(ambient)
 ```
 
 #### 环境光
@@ -93,9 +93,9 @@ scene.add(ambient);
 :::
 
 ```js
-this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-this.camera.position.set(0, 0, 3); //设置相机位置
-this.camera.lookAt(this.scene.position); //设置相机方向(指向的场景对象)
+this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
+this.camera.position.set(0, 0, 3) //设置相机位置
+this.camera.lookAt(this.scene.position) //设置相机方向(指向的场景对象)
 ```
 
 在`Three.js`中，一共有两种相机，分别是透视相机和正交相机。
@@ -132,7 +132,7 @@ render() {
 <Three01 />
 
 <script setup>
-    import Three01 from '../components/demo/three01.vue'
+    import Three01 from '../components/demo/three/three01.vue'
 </script>
 
 ## 总结

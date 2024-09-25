@@ -12,7 +12,7 @@
 
 ```js
 //创建一个空的几何体对象
-const geometry = new THREE.BufferGeometry();
+const geometry = new THREE.BufferGeometry()
 ```
 
 ### 通过类型化数组创建几何体的顶点坐标
@@ -38,14 +38,14 @@ const vertices = new Float32Array([
   50,
   0,
   10 //顶点6坐标
-]);
+])
 ```
 
 使用`BufferAttribute`缓冲区对象表示几何体的顶点数据
 
 ```js
-const attribue = new THREE.BufferAttribute(vertices, 3); //3个为一组，表示一个顶点的xyz坐标
-geometry.attributes.position = attribue; // 设置几何体attributes属性的位置属性
+const attribue = new THREE.BufferAttribute(vertices, 3) //3个为一组，表示一个顶点的xyz坐标
+geometry.attributes.position = attribue // 设置几何体attributes属性的位置属性
 ```
 
 :::warning 注意
@@ -62,9 +62,9 @@ geometry.attributes.position = attribue; // 设置几何体attributes属性的�
 var material = new THREE.PointsMaterial({
   vertexColors: true, //是否启用顶点颜色
   size: 10.0 //点对象像素尺寸
-}); //材质对象
-var points = new THREE.Points(geometry, material); //点模型对象
-scene.add(points); //点对象添加到场景中
+}) //材质对象
+var points = new THREE.Points(geometry, material) //点模型对象
+scene.add(points) //点对象添加到场景中
 ```
 
 ### 线模型
@@ -75,19 +75,19 @@ scene.add(points); //点对象添加到场景中
 var material = new THREE.LineBasicMaterial({
   // color: 0xff0000 //线条颜色
   vertexColors: true
-}); //材质对象
-var line = new THREE.Line(geometry, material); //线条模型对象
-scene.add(line); //线条对象添加到场景中
+}) //材质对象
+var line = new THREE.Line(geometry, material) //线条模型对象
+scene.add(line) //线条对象添加到场景中
 ```
 
 除了有`Line`，`three.js`还提供了`LineLoop`,`LineSegments`，和`Line`的区别就是绘制线条的规则不同。
 
 ```js
 // 闭合线条
-const line = new THREE.LineLoop(geometry, material);
+const line = new THREE.LineLoop(geometry, material)
 
 //非连续的线条
-const line = new THREE.LineSegments(geometry, material);
+const line = new THREE.LineSegments(geometry, material)
 ```
 
 ### 网格模型
@@ -99,10 +99,10 @@ var material = new THREE.MeshBasicMaterial({
   color: 0x0000ff, //三角面颜色
   // vertexColors: true,
   side: THREE.DoubleSide //两面可见
-}); //材质对象
+}) //材质对象
 // 场景网格对象
-const mesh = createMesh(geometry, material);
-scene.add(mesh);
+const mesh = createMesh(geometry, material)
+scene.add(mesh)
 ```
 
 以下是通过`BufferGeometry`创建的几何体，分别使用点模型、线模型、网格模型展示不同的效果。大家可以切换选择查看。
@@ -110,5 +110,5 @@ scene.add(mesh);
 <Three03 />
 
 <script setup>
-    import Three03 from '../components/demo/three03.vue'
+    import Three03 from '../components/demo/three/three03.vue'
 </script>

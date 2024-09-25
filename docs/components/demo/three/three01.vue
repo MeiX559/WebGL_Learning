@@ -4,10 +4,10 @@
 
 <script setup lang="ts">
 // import * as THREE from 'three';
-import { onMounted, ref } from 'vue';
-import { ChinaMap } from '../utils/three';
+import { onMounted, ref } from 'vue'
+import { ChinaMap } from '../../utils/three'
 
-const canvasRef = ref(null);
+const canvasRef = ref(null)
 
 // function init() {
 //   // 创建场景
@@ -55,6 +55,6 @@ const canvasRef = ref(null);
 
 onMounted(() => {
   // init()
-  new ChinaMap(canvasRef.value).init();
-});
+  new ChinaMap(canvasRef.value).init()
+})
 </script>

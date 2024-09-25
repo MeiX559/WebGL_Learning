@@ -12,7 +12,7 @@
 
 ```js
 // 构造函数格式
-OrthographicCamera(left, right, top, bottom, near, far);
+OrthographicCamera(left, right, top, bottom, near, far)
 ```
 
 ### 参数
@@ -35,19 +35,19 @@ OrthographicCamera(left, right, top, bottom, near, far);
  * @param {*} height canvas画布高
  */
 function calculateCameraParameters(width, height) {
-  const k = width / height;
-  const s = 200;
-  return { k, s };
+  const k = width / height
+  const s = 200
+  return { k, s }
 }
-const { k, s } = calculateCameraParameters(600, 600);
-const camera = THREE.OrthographicCamera(-s * k, s * k, s, -s, 1, 1000);
+const { k, s } = calculateCameraParameters(600, 600)
+const camera = THREE.OrthographicCamera(-s * k, s * k, s, -s, 1, 1000)
 ```
 
 ### 设置相机位置和观察目标
 
 ```js
-camera.position.set(200, 300, 200); //设置相机位置
-camera.lookAt(scene.position); //观察目标(指向原点)
+camera.position.set(200, 300, 200) //设置相机位置
+camera.lookAt(scene.position) //观察目标(指向原点)
 ```
 
 :::warning 注意
@@ -63,7 +63,7 @@ camera.lookAt(scene.position); //观察目标(指向原点)
 使用`OrthographicCamera`渲染江西省地图边界
 
 <script setup>
-    import ThreeCamera from '../components/demo/threeCamera.vue'
+    import ThreeCamera from '../components/demo/three/threeCamera.vue'
 </script>
 
 <ThreeCamera />
