@@ -46,8 +46,8 @@ export default defineConfig({
           { text: 'Three.js顶点概念', link: '/three/point' },
           { text: 'Three.js生成曲线、几何体', link: '/three/gen' },
           { text: '相机', link: '/three/camera' },
-          { text: 'Three.js绘制地图', link: '/three/map' },
-          { text: 'Three.js绘制地球', link: '/three/earth' }
+          { text: 'Three.js绘制地图', link: '/three/map' }
+          // { text: 'Three.js绘制地球', link: '/three/earth' }
         ]
       }
     ],
