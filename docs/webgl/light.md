@@ -79,3 +79,44 @@
 通过调整 x,y,z 不同方向的值，我们可以观察到不同的结果，比如当光线平行于 x 轴，即调整光线方向的值为(1,0,0)时，可以观察到立方体垂直于 x 轴的面为蓝色，其余面为黑色；当调整为(0,0,0)时，立方体所有的面都为黑色。
 
 在上面这个示例中，默认是只有平行光，环境光是默认关闭的，你可以通过控制环境光是否开启来观察图形的结果，当开启环境光后，可以观察光线平行于 x 轴，即调整光线方向的值为(1,0,0)时，立方体垂直于 x 轴的面为蓝色，其余面为暗蓝色;
+
+## 点光源
+
+:::tip 点光源
+点光源是由点向周围发散的光（如灯泡），可以用**光源位置**和**颜色**来定义点光源。因为点光源是**从一个位置发散开**的，所以它照射到物体表面的时候，**入射角都是不唯一的**，当光发散的时候，点光源照射到物体表面的入射角越来越大，根据反射光颜色公式：反射光颜色 = 入射光颜色 x 物体表面颜色 x cosθ 可知，随着光源的发散，物体表面的颜色会逐渐暗淡。
+
+结论：**漫反射光的强度随着入射角的增大而减小**
+:::
+
+### 点光源示例
+
+定义着色器源码
+
+```js
+const vertexShaderSource = `
+attribute vec4 a_Position; //顶点位置
+attribute vec4 a_Color; //顶点颜色
+attribute vec3 a_Normal; // 顶点所处面对应的法向量
+varying vec4 v_Color; // 反射光颜色
+uniform mat4 u_MvpMatrix;
+uniform vec4 u_LightColor; // 定义入射光颜色
+uniform vec3 u_LightPosition; // 点光源位置
+uniform vec4 u_AmbientColor; //环境光
+
+    void main () {
+    gl_Position = u_MvpMatrix * a_Position; //  MVP 变换
+    vec3 normal = normalize(a_Normal); // 归一化顶点对应的法向量
+    // 求出当前顶点对应的光线方向（两向量相减）
+    vec3 lightDirection = normalize(u_LightPosition - vec3(a_Position));
+    float dotProduct = dot(normal, lightDirection); // 求光线、法向量点积
+    vec4 ambient = a_Color * u_AmbientColor;
+    vec3 colorRes = vec3(u_LightColor) * vec3(a_Color) * dotProduct; // 计算反射光的颜色
+    v_Color= vec4(colorRes, a_Color.a) + ambient; // 将反射光的颜色传递给片元着色器
+    }
+
+`
+```
+
+点光源的着色器源码和平行光不同的是，定义了点光源位置变量`u_LightPosition`,光线方向由顶点和点光源位置向量相减得到，其他基本一样。
+
+<Light type="pointLight"  />
