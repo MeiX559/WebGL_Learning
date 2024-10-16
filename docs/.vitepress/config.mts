@@ -24,9 +24,7 @@ export default defineConfig({
           { text: 'WebGL绘制点', link: '/webgl/point' },
           { text: 'WebGL动态绘制点', link: '/webgl/drawPoint' },
           // { text: 'WebGL动态绘制颜色', link: '/webgl/changeColor' },
-          { text: 'WebGL动态绘制线', link: '/webgl/line' },
-          // { text: 'WebGL相机', link: '/webgl/camera' },
-          { text: 'WebGL光照', link: '/webgl/light' }
+          { text: 'WebGL动态绘制线', link: '/webgl/line' }
         ]
       },
       {
@@ -35,11 +33,18 @@ export default defineConfig({
       },
       {
         text: '二维动画',
-        items: [{ text: '几何变换', link: '/animation/2d' }]
+        items: [
+          { text: '几何变换', link: '/animation/2d' },
+          { text: '图形学中的数学', link: '/math/math' }
+        ]
       },
       {
         text: '三维动画',
-        items: [{ text: '立方体', link: '/animation/3d' }]
+        items: [
+          { text: '立方体', link: '/animation/3d' },
+          { text: 'WebGL相机', link: '/webgl/camera' },
+          { text: 'WebGL光照', link: '/webgl/light' }
+        ]
       },
       {
         text: 'Three.js',
