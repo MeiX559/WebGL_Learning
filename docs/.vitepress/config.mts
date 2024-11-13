@@ -34,8 +34,8 @@ export default defineConfig({
       {
         text: '二维动画',
         items: [
-          { text: '几何变换', link: '/animation/2d' },
-          { text: '图形学中的数学', link: '/math/math' }
+          { text: '图形学中的数学', link: '/math/math' },
+          { text: '几何变换', link: '/animation/2d' }
         ]
       },
       {
