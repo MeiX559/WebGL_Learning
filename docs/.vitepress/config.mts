@@ -57,6 +57,10 @@ export default defineConfig({
           { text: 'Three.js绘制地图', link: '/three/map' }
           // { text: 'Three.js绘制地球', link: '/three/earth' }
         ]
+      },
+      {
+        text: '模型实战',
+        link: '/webgl/model'
       }
     ],
     /* 右侧大纲配置 */
