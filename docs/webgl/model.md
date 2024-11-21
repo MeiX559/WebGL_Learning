@@ -6,6 +6,8 @@
 
 ## 导入模型示例
 
+以下示例是从[free3d](https://free3d.com/zh/3d-model/wolf-rigged-and-game-ready-42808.html)网站找的一个模型，将该模型的.mtl 和.obj 文件下载放到本地，通过`Three.js`中的`OBJLoader`和`MTLLoader`加载模型就可以了。
+
 <Model />
 
 <script setup>

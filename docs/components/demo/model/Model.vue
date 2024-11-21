@@ -21,20 +21,23 @@ function init() {
   renderer = new THREE.WebGLRenderer() //创建渲染器
   let ambientLight = new THREE.AmbientLight(0xffffff, 0.6) //环境光
   let pointLight = new THREE.PointLight(0xffffff, 0.6) //点光源
-  camera.position.set(0, 1, 6)
+  camera.position.set(5, 3, 3)
   scene.add(ambientLight)
   scene.add(camera)
   camera.add(pointLight)
 
   const loader = new OBJLoader()
   const MTLloader = new MTLLoader()
+  renderer.setClearColor(0xffffff, 0.5) // 设置背景颜色为白色
   renderer.setSize(width, height)
   canvasRef.value.appendChild(renderer.domElement)
 
-  MTLloader.load('/models/Car/Car_Obj.mtl', function (materials) {
+  MTLloader.load('/models/Wolf/Wolf_obj.mtl', function (materials) {
+    materials.preload()
+    console.log('materials', materials)
     loader.setMaterials(materials)
     loader.load(
-      '/models/Car/Car Obj.obj',
+      '/models/Wolf/Wolf_obj.obj',
       function (obj) {
         scene.add(obj)
         controls = new OrbitControls(camera, renderer.domElement)
