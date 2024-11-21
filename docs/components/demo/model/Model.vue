@@ -31,10 +31,10 @@ function init() {
   renderer.setSize(width, height)
   canvasRef.value.appendChild(renderer.domElement)
 
-  MTLloader.load('../../../public/models/Car/Car_Obj.mtl', function (materials) {
+  MTLloader.load('/models/Car/Car_Obj.mtl', function (materials) {
     loader.setMaterials(materials)
     loader.load(
-      '../../../public/models/Car/Car Obj.obj',
+      '/models/Car/Car Obj.obj',
       function (obj) {
         scene.add(obj)
         controls = new OrbitControls(camera, renderer.domElement)
