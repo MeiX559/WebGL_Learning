@@ -9,7 +9,7 @@ import { createShader, createProgram } from '../utils'
 import { ElSwitch } from 'element-plus'
 import 'element-plus/dist/index.css'
 
-const imageUrl = '/public/logo.png'
+const imageUrl = '/logo.png'
 const isY = ref(true)
 let canvas: any = null
 let gl: any = null
