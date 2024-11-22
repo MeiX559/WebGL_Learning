@@ -43,8 +43,8 @@ export default defineConfig({
         items: [
           { text: '立方体', link: '/animation/3d' },
           { text: 'WebGL相机', link: '/webgl/camera' },
-          // { text: '粒子动画', link: 'webgl/particle' },
-          { text: 'WebGL光照', link: '/webgl/light' }
+          { text: 'WebGL光照', link: '/webgl/light' },
+          { text: '粒子动画', link: '/webgl/particle' }
         ]
       },
       {
