@@ -16,6 +16,8 @@ WebGL 程序运行三要素：
 2. JavaScript（脚本语言）
 3. GLSL ES（着色器语言）
 
+![WebGL 三要素](./images/concept1.png)
+
 只要具备了这三个要素，我们就可以在浏览器上实现各种三维图形的网页。
 :::info GLSL
 GLSL ES（着色器语言）用于计算机图形编程，运行在 GPU 中。

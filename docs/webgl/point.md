@@ -120,6 +120,8 @@ gl.useProgram(program) // 应用着色器程序，告诉 WebGL 绘制的时候�
 
 着色器程序 `createProgram` 用于连接顶点、片元着色器.
 
+你也可以这样理解，`GLSL` 是以字符串的形式"嵌入" `JavaScript` 中的。这段着色器代码最终将会交由 GPU 去执行。
+
 4. 开始绘制
 
 ```JavaScript
@@ -139,6 +141,10 @@ gl.drawArrays(gl.POINTS, 0, 1)
 </script>
 
 以上就完成了一个点的绘制。
+
+整个执行阶段的流程图如下所示：
+
+![绘制一个点的执行流程](./images/point1.png)
 
 ## 总结
 
